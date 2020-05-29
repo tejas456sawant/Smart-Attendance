@@ -1,0 +1,49 @@
+{
+  "name": "smartattendance-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "chart.js": "^2.9.3",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.14.3",
+    "materialize-css": "^1.0.0",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-bootstrap-table-next": "^4.0.1",
+    "react-bootstrap-table2-editor": "^1.4.0",
+    "react-bootstrap-table2-toolkit": "^2.1.2",
+    "react-calendar": "^3.0.1",
+    "react-chartjs-2": "^2.9.0",
+    "react-dom": "^16.13.1",
+    "react-materialize": "^3.9.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "uuid": "^8.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

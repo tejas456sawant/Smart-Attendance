@@ -1,0 +1,195 @@
+/** @format */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+}
+select.form-control.editor.edit-select {
+  display: block;
+  font-size: 16px;
+  font-family: sans-serif;
+
+  color: #444;
+
+  width: 100%;
+  max-width: 100%;
+  background-color: rgba(68, 68, 68, 0);
+  margin: 0;
+  border: 0px;
+  border-radius: 0.5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+}
+
+select.form-control.editor.edit-select:focus {
+  box-shadow: 0px 0px 4px 1px rgba(0, 167, 245, 0.685);
+
+  background-color: rgba(68, 68, 68, 0);
+  color: rgba(34, 34, 34, 0.795);
+  outline: none;
+}
+
+
+table td {
+  border-style: solid;
+  border-color: rgb(187, 187, 187);
+  border-width: 1px;
+}
+
+table th {
+  border-radius: 0%;
+  border-bottom-color: rgb(90, 90, 90);
+  border-width: 1px;
+  background: #ccc;
+}
+tr:nth-child(even) {
+  background: rgb(233, 232, 232);
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+input[type="checkbox"].editor.edit-chseckbox.checkbox {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+div::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+div::-webkit-scrollbar-track {
+  background: #ffffff73;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    to right top,
+    #708294,
+    #7d8fa1,
+    #8a9cae,
+    #97a9bb,
+    #a4b6c9
+  );
+  border-radius: 20px;
+}
+
+.Student:hover {
+  box-shadow: 0px 0px 5px 3px rgb(255, 255, 255);
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(255, 255, 255);
+}
+.modal.modal-fixed-footer .modal-content {
+  background: linear-gradient(to top, #d5dae5, #d5dae5, #e4e6ed, #f2f2f6);
+}
+
+.datepicker-table td {
+  border-radius: 50%;
+  padding: 0;
+  background-color: white;
+  border: none;
+}
+
+.datepicker-table th {
+  padding: 10px 5px;
+  text-align: center;
+  border: none;
+  background: white;
+}
+
+
+
+.datepicker-date-display {
+    flex: 1 1 auto;
+    background: linear-gradient(teal,#6bc399);
+    color: #fff;
+    padding: 20px 22px;
+    font-weight: 500;
+}
+
+datepicker-table th {
+  padding: 10px 5px;
+  text-align: center;
+  border: none;
+  background: white;
+}
+
+.searchb::placeholder{
+ color: #444;
+}
+
+.searchi:hover{
+  color: #6bc399;
+}
+
+.addcard{
+  height: 260px;
+}
+
+.addcard2{
+  background-color: red;
+  margin-top: 60px;
+  height: 90%;
+  border-radius: 30px;
+  background: linear-gradient(to top,rgb(165, 72, 94), #E57373); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  padding-top: 2%;
+  padding-left: 8%;
+  font-size: 25px;
+  color:rgb(255, 255, 255);
+  font-family: "Varela Round";
+}
+
+.addcard2:hover{
+  box-shadow:         3px 5px 12px 0px rgba(50, 50, 50, 0.88);
+}
+
+.news input.select-dropdown.dropdown-trigger{
+  color: white;
+  text-align: center;
+}
+
+.news .select-wrapper .caret {
+  
+  fill: rgba(19, 0, 0, 0.38);
+}
+
+.news .input-field input:focus {
+  border-bottom: 1px solid rgb(255, 255, 255) !important;
+  box-shadow: 0 0px 0 0 rgb(255, 255, 255) !important
+}
+
+.news input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 0px 0 0 rgb(255, 255, 255);
+}
+
+.icon12{
+  color: rgba(255, 255, 255, 0.603);
+  vertical-align: middle;
+  
+  margin-left: 4px;
+}
+
+.icon12:hover{
+  background: radial-gradient(rgba(255, 255, 255, 0.288),rgba(255, 255, 255, 0));
+  border-radius: 50%;
+}
+
+.icon12:active{
+  color: white;
+  border-radius: 50%;
+}
