@@ -9,30 +9,27 @@ import ToolkitProvider, { CSVExport } from "react-bootstrap-table2-toolkit";
 const { ExportCSVButton } = CSVExport;
 
 export default class StudentAttendance extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      enrollment: "",
-      division: "",
-      columns: [
-        {
-          dataField: "date",
-          text: "Date",
-        },
-        {
-          dataField: "subject",
-          text: "Subject",
-        },
-      ],
-      data: [
-        {
-          date: "2020-03-20",
-          subject: "P",
-        },
-      ],
-      loadSpinner: false,
-    };
-  }
+  state = {
+    enrollment: "",
+    division: "",
+    columns: [
+      {
+        dataField: "date",
+        text: "Date",
+      },
+      {
+        dataField: "subject",
+        text: "Subject",
+      },
+    ],
+    data: [
+      {
+        date: "2020-03-20",
+        subject: "P",
+      },
+    ],
+    loadSpinner: false,
+  };
 
   componentDidMount() {
     const { endiv } = this.props.match.params;

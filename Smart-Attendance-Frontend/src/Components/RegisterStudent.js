@@ -3,43 +3,38 @@
 import React, { Component } from "react";
 import { Select } from "react-materialize";
 import axios from "axios";
-import Firebase from "./Firebase";
 import SpinnerComp from "./SpinnerComp";
 import { Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 class RegisterStudent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      enroll: "",
-      name: "",
-      division: "H3",
-      batch: "A Batch",
-      email: "",
-      phoneno: "",
-      imgUrl:
-        "https://www.nationalgeographic.com/content/dam/photography/rights-exempt/best-of-decade/best-of-the-decade-john-stanmeyer-out-of-eden.jpg",
-      imgStatus: "Invalid image ! No face detected ):",
-      loadSpinner: false,
-    };
-  }
+  state = {
+    enroll: "",
+    name: "",
+    division: "H3",
+    batch: "A Batch",
+    email: "",
+    phoneno: "",
+    imgUrl:
+      "https://www.nationalgeographic.com/content/dam/photography/rights-exempt/best-of-decade/best-of-the-decade-john-stanmeyer-out-of-eden.jpg",
+    imgStatus: "Invalid image ! No face detected ):",
+    loadSpinner: false,
+  };
 
   spinnerFunction = () => {
     if (this.state.loadSpinner) {
       return <SpinnerComp />;
     }
   };
-
   isLoggedIn = () => {
-    if (localStorage.getItem("uid") === null) return <Redirect to='/login' />;
+    if (firebase.auth().currentUser === null) return <Redirect to='/login' />;
   };
-
   render() {
     return (
       <div className='row'>
-        {this.isLoggedIn()}
         <div className='col s5'>
           <div className='container valign'>
             <div className='white col s12'>
@@ -161,7 +156,7 @@ class RegisterStudent extends Component {
                     type='file'
                     onChange={(event) => {
                       this.setState({ loadSpinner: true });
-                      let storageRef = Firebase.storage().ref("StudentImages");
+                      let storageRef = firebase.storage().ref("StudentImages");
                       let firstFile = event.target.files[0]; // upload the first file only
                       storageRef
                         .child(uuidv4())

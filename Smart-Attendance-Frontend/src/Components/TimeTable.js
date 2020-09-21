@@ -8,19 +8,18 @@ import SpinnerComp from "./SpinnerComp";
 import { Redirect } from "react-router-dom";
 import { Select } from "react-materialize";
 import Axios from "axios";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 class TimeTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loadSpinner: false,
-      saving: "",
-      selectedTable: "Select Classroom or Lab",
-      classOrLab: [],
-      subjects: [],
-    };
-  }
+  state = {
+    data: [],
+    loadSpinner: false,
+    saving: "",
+    selectedTable: "Select Classroom or Lab",
+    classOrLab: [],
+    subjects: [],
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });
@@ -37,7 +36,7 @@ class TimeTable extends Component {
   }
 
   isLoggedIn = () => {
-    if (localStorage.getItem("uid") === null) return <Redirect to='/login' />;
+    if (firebase.auth().currentUser === null) return <Redirect to='/login' />;
   };
 
   spinnerFunction = () => {
@@ -49,7 +48,6 @@ class TimeTable extends Component {
   render() {
     return (
       <div style={{ margin: 50, borderColor: "black", borderWidth: 10 }}>
-        {this.isLoggedIn()}
         <div className='container'>
           <div className='col3'>
             <Select

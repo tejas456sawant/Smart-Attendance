@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import "./App.css";
 import Navbar from "./Components/navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RegisterStudent from "./Components/RegisterStudent";
@@ -15,8 +14,6 @@ import GenerateReports from "./Components/GenerateReports";
 import StudentAttendance from "./Components/StudentAttendance";
 import AddNew from "./Components/AddNew";
 import Queries from "./Components/Queries";
-
-//Server Url REACT_APP_backUrl=http://35.188.34.4:3000
 
 const App = () => {
   return (
@@ -37,7 +34,7 @@ const App = () => {
           <Route path='/login' component={Login} />
           <Route path='/complaint' component={Queries} />
           <Route path='/edit/:enroll' component={EditInfo} />
-          <Route path='*' component={Days} />
+          <Route path='/' component={Days} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -8,17 +8,14 @@ import { Link } from "react-router-dom";
 import SpinnerComp from "./SpinnerComp";
 
 export default class AddNew extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      divisions: [],
-      selectedDivision: "",
-      divisionName: "",
-      classorlab: "",
-      loadSpinner: false,
-      suborprac: "",
-    };
-  }
+  state = {
+    divisions: [],
+    selectedDivision: "",
+    divisionName: "",
+    classorlab: "",
+    loadSpinner: false,
+    suborprac: "",
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });
@@ -173,8 +170,7 @@ export default class AddNew extends Component {
                   this.setState({ divisionName: text.target.value });
                 }}
               />
-              <a
-                href='#!'
+              <span
                 onClick={() => {
                   this.setState({ loadSpinner: true });
                   Axios.post(`${process.env.REACT_APP_backUrl}/set/division`, {
@@ -186,10 +182,10 @@ export default class AddNew extends Component {
                 }}>
                 <i
                   className='medium material-icons icon12'
-                  style={{ verticalAlign: "middle" }}>
+                  style={{ verticalAlign: "middle", cursor: "pointer" }}>
                   add
                 </i>
-              </a>
+              </span>
             </div>
           </div>
           <div className='col l6 addcard'>
@@ -217,8 +213,7 @@ export default class AddNew extends Component {
                 }}
               />
 
-              <a
-                href='#!'
+              <span
                 onClick={() => {
                   this.setState({ loadSpinner: true });
                   Axios.post(
@@ -233,10 +228,10 @@ export default class AddNew extends Component {
                 }}>
                 <i
                   className='medium material-icons icon12'
-                  style={{ verticalAlign: "middle" }}>
+                  style={{ verticalAlign: "middle", cursor: "pointer" }}>
                   add
                 </i>
-              </a>
+              </span>
             </div>
           </div>
         </div>

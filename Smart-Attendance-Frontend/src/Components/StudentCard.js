@@ -3,16 +3,14 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+
 class StudentCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      StudentName: "",
-      StudentImage:
-        "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
-      StudentDivision: "",
-    };
-  }
+  state = {
+    StudentName: "",
+    StudentImage:
+      "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+    StudentDivision: "",
+  };
 
   componentDidMount() {
     Axios.get(

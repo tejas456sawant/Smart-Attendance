@@ -1,20 +1,18 @@
 /** @format */
 
 import React, { Component } from "react";
-import axios from "axios";
 import { Redirect } from "react-router-dom";
 import SpinnerComp from "./SpinnerComp";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      loadSpinner: false,
-      errorText: "",
-    };
-  }
+  state = {
+    email: "",
+    password: "",
+    loadSpinner: false,
+    errorText: "",
+  };
 
   render() {
     return (
@@ -99,7 +97,6 @@ class Login extends Component {
                     onClick={this.login}>
                     Login
                   </button>
-                  {this.isLoggedIn()}
                   <br />
                   <br />
                   <br />
@@ -120,25 +117,30 @@ class Login extends Component {
 
   login = () => {
     this.setState({ loadSpinner: true });
-    var data = {
-      email: this.state.email,
-      password: this.state.password,
-    };
 
-    axios.post(process.env.REACT_APP_backUrl + "/login", data).then((user) => {
-      console.log(user.data);
-      if (user.data !== "admin@gmail.com") {
-        return this.setState({
-          loadSpinner: false,
-          errorText: "Admin account not found .",
-        });
-      }
-      if (user.data === "admin@gmail.com") {
-        localStorage.setItem("uid", user.data);
+    firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(function () {
+        // Existing and future Auth states are now persisted in the current
+        // session only. Closing the window would clear any existing state even
+        // if a user forgets to sign out.
+        // ...
+        // New sign-in will be persisted with session persistence.
+        return firebase
+          .auth()
+          .signInWithEmailAndPassword(this.state.email, this.state.password);
+      })
+      .then(() => {
         this.props.history.replace("/");
         this.setState({ loadSpinner: false });
-      }
-    });
+      })
+      .catch((error) => {
+        this.setState({
+          loadSpinner: false,
+          errorText: error.message,
+        });
+      });
   };
 
   spinnerFunction = () => {
@@ -148,7 +150,8 @@ class Login extends Component {
   };
 
   isLoggedIn = () => {
-    if (localStorage.getItem("uid") === null) return <Redirect to='/login' />;
+    var user = firebase.auth().currentUser;
+    if (user === null) return <Redirect to='/login' />;
     else return <Redirect to='/' />;
   };
 }

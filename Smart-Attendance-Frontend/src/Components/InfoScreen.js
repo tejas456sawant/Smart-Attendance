@@ -8,16 +8,13 @@ import SpinnerComp from "./SpinnerComp";
 import { Select } from "react-materialize";
 
 class InfoScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      enrollment: [],
-      gpData: {},
-      selectedDivision: "H3",
-      loadSpinner: false,
-      searchEnrollment: "",
-    };
-  }
+  state = {
+    enrollment: [],
+    gpData: {},
+    selectedDivision: "H3",
+    loadSpinner: false,
+    searchEnrollment: "",
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });

@@ -11,7 +11,11 @@ router.get("/division", (req, res) => {
     .doc("Division")
     .get()
     .then((divisions) => {
-      res.json(divisions.get("divisions"));
+      if (divisions.get("divisions") === undefined) {
+        return res.json(["Please Add Division"]);
+      } else {
+        return res.status(200).json(divisions.get("divisions"));
+      }
     });
 });
 
@@ -20,7 +24,11 @@ router.get("/classorlab", (req, res) => {
     .doc("ClassAndLab")
     .get()
     .then((classorlab) => {
-      res.json(classorlab.get("rooms"));
+      if (classorlab.get("rooms") === undefined) {
+        return res.json(["Please Add Classroom or Lab"]);
+      } else {
+        return res.status(200).json(classorlab.get("rooms"));
+      }
     });
 });
 

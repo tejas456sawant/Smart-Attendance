@@ -2,21 +2,21 @@
 
 import React from "react";
 import { Component } from "react";
-import Firebase from "../Components/Firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 import SpinnerComp from "./SpinnerComp";
 
 export default class Queries extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      complaints: [],
-      loadSpinner: false,
-    };
-  }
+  state = {
+    complaints: [],
+    loadSpinner: false,
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });
-    Firebase.firestore()
+    firebase
+      .firestore()
       .collection("Complaints")
       .get()
       .then((comps) => {
@@ -52,7 +52,7 @@ export default class Queries extends Component {
                 height: "125px",
                 borderRadius: "10px",
                 background:
-                  " linear-gradient(to left top, #708294, #7d8fa1, #8a9cae, #97a9bb, #a4b6c9)",
+                  "linear-gradient(to left top, #708294, #7d8fa1, #8a9cae, #97a9bb, #a4b6c9)",
               }}>
               <div className='card-content row'>
                 <div
@@ -88,7 +88,8 @@ export default class Queries extends Component {
                       onClick={() => {
                         this.setState({ loadSpinner: true });
 
-                        Firebase.firestore()
+                        firebase
+                          .firestore()
                           .collection("Complaints")
                           .doc(complaint.cid)
                           .set(
@@ -117,8 +118,7 @@ export default class Queries extends Component {
                   {complaint.enrollment}
                   <i className='material-icons right'>close</i>
                 </span>
-                <blockquote>{complaint.message}</blockquote>
-                ); })}
+                <blockquote>{complaint.message}</blockquote>) } ) }
               </div>
             </div>
           </div>

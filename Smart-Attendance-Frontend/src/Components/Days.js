@@ -7,19 +7,18 @@ import SpinnerComp from "./SpinnerComp";
 import { Redirect } from "react-router-dom";
 import { DatePicker, Select, Button } from "react-materialize";
 import Axios from "axios";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 class Days extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loadSpinner: false,
-      startDate: "",
-      endDate: "",
-      selectedDivision: "H3",
-      divisions: [],
-    };
-  }
+  state = {
+    data: [],
+    loadSpinner: false,
+    startDate: "",
+    endDate: "",
+    selectedDivision: "H3",
+    divisions: [],
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });
@@ -44,7 +43,7 @@ class Days extends Component {
   };
 
   isLoggedIn = () => {
-    if (localStorage.getItem("uid") === null) return <Redirect to='/login' />;
+    if (firebase.auth().currentUser === null) return <Redirect to='/login' />;
   };
 
   render() {
@@ -344,7 +343,6 @@ class Days extends Component {
             }}>
             {this.spinnerFunction()}
           </div>
-          {this.isLoggedIn()}
         </div>
       </div>
     );

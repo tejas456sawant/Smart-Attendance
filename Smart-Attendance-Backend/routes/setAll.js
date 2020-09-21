@@ -84,11 +84,7 @@ router.post("/division", (req, res) => {
     .doc("Division")
     .get()
     .then((divisions) => {
-      if (divisions.get("divisions") !== undefined) {
-        if (divisions.get("divisions").includes(division)) {
-          return res.json("Division already exist.");
-        }
-      } else {
+      if (divisions.get("divisions") === undefined) {
         db.collection("OtherInfo")
           .doc("Division")
           .set(
@@ -102,6 +98,24 @@ router.post("/division", (req, res) => {
           .then(() => {
             res.json("Division Added.");
           });
+      } else {
+        if (divisions.get("divisions").includes(division)) {
+          return res.json("Division already exist.");
+        } else {
+          db.collection("OtherInfo")
+            .doc("Division")
+            .set(
+              {
+                divisions: firebase.firestore.FieldValue.arrayUnion(division),
+              },
+              {
+                merge: true,
+              },
+            )
+            .then(() => {
+              res.json("Division Added.");
+            });
+        }
       }
     });
 });

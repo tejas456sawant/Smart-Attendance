@@ -7,16 +7,13 @@ import SpinnerComp from "./SpinnerComp";
 import { Link } from "react-router-dom";
 
 class DailyCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      attData: [],
-      lab: [],
-      datar: [],
-      datara: [],
-      loadSpinner: false,
-    };
-  }
+  state = {
+    attData: [],
+    lab: [],
+    datar: [],
+    datara: [],
+    loadSpinner: false,
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });

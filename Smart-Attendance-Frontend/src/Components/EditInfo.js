@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Firebase from "./Firebase";
 import SpinnerComp from "./SpinnerComp";
 import Axios from "axios";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 const EditInfo = ({ match }) => {
   const { enroll } = match.params;
@@ -116,7 +117,7 @@ const EditInfo = ({ match }) => {
                   type='file'
                   onChange={(event) => {
                     setEditUser({ ...editUser, loadSpinner: true });
-                    let storageRef = Firebase.storage().ref("StudentImages");
+                    let storageRef = firebase.storage().ref("StudentImages");
                     let firstFile = event.target.files[0]; // upload the first file only
                     storageRef
                       .child(StudentEnrollment)

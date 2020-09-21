@@ -10,32 +10,29 @@ import Axios from "axios";
 const { ExportCSVButton } = CSVExport;
 
 export default class GenerateReports extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      divisions: [],
-      subjects: [],
-      sub: "",
-      date: "",
-      division: "H3",
-      batch: "A Batch",
-      tableData: [
-        {
-          enrollment: "1706108",
-        },
-      ],
-      tableColumns: [
-        {
-          dataField: "enrollment",
-          text: "Enrollment No",
-        },
-      ],
-      selectedDivision: "",
-      selectedSubject: "",
-      selectedBatch: "",
-      loadSpinner: false,
-    };
-  }
+  state = {
+    divisions: [],
+    subjects: [],
+    sub: "",
+    date: "",
+    division: "H3",
+    batch: "A Batch",
+    tableData: [
+      {
+        enrollment: "1706108",
+      },
+    ],
+    tableColumns: [
+      {
+        dataField: "enrollment",
+        text: "Enrollment No",
+      },
+    ],
+    selectedDivision: "",
+    selectedSubject: "",
+    selectedBatch: "",
+    loadSpinner: false,
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });

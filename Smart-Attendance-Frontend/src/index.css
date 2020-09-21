@@ -36,7 +36,6 @@ select.form-control.editor.edit-select:focus {
   outline: none;
 }
 
-
 table td {
   border-style: solid;
   border-color: rgb(187, 187, 187);
@@ -110,14 +109,12 @@ div::-webkit-scrollbar-thumb {
   background: white;
 }
 
-
-
 .datepicker-date-display {
-    flex: 1 1 auto;
-    background: linear-gradient(teal,#6bc399);
-    color: #fff;
-    padding: 20px 22px;
-    font-weight: 500;
+  flex: 1 1 auto;
+  background: linear-gradient(teal, #6bc399);
+  color: #fff;
+  padding: 20px 22px;
+  font-weight: 500;
 }
 
 datepicker-table th {
@@ -127,69 +124,75 @@ datepicker-table th {
   background: white;
 }
 
-.searchb::placeholder{
- color: #444;
+.searchb::placeholder {
+  color: #444;
 }
 
-.searchi:hover{
+.searchi:hover {
   color: #6bc399;
 }
 
-.addcard{
+.addcard {
   height: 260px;
 }
 
-.addcard2{
+.addcard2 {
   background-color: red;
   margin-top: 60px;
   height: 90%;
   border-radius: 30px;
-  background: linear-gradient(to top,rgb(165, 72, 94), #E57373); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: linear-gradient(
+    to top,
+    rgb(165, 72, 94),
+    #e57373
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   padding-top: 2%;
   padding-left: 8%;
   font-size: 25px;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   font-family: "Varela Round";
 }
 
-.addcard2:hover{
-  box-shadow:         3px 5px 12px 0px rgba(50, 50, 50, 0.88);
+.addcard2:hover {
+  box-shadow: 3px 5px 12px 0px rgba(50, 50, 50, 0.88);
 }
 
-.news input.select-dropdown.dropdown-trigger{
+.news input.select-dropdown.dropdown-trigger {
   color: white;
   text-align: center;
 }
 
 .news .select-wrapper .caret {
-  
   fill: rgba(19, 0, 0, 0.38);
 }
 
 .news .input-field input:focus {
   border-bottom: 1px solid rgb(255, 255, 255) !important;
-  box-shadow: 0 0px 0 0 rgb(255, 255, 255) !important
+  box-shadow: 0 0px 0 0 rgb(255, 255, 255) !important;
 }
 
-.news input[type=text]:not(.browser-default):focus:not([readonly]) {
+.news input[type="text"]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid rgb(255, 255, 255);
   box-shadow: 0 0px 0 0 rgb(255, 255, 255);
 }
 
-.icon12{
+.icon12 {
   color: rgba(255, 255, 255, 0.603);
   vertical-align: middle;
-  
+
   margin-left: 4px;
 }
 
-.icon12:hover{
-  background: radial-gradient(rgba(255, 255, 255, 0.288),rgba(255, 255, 255, 0));
+.icon12:hover {
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.288),
+    rgba(255, 255, 255, 0)
+  );
   border-radius: 50%;
 }
 
-.icon12:active{
+.icon12:active {
   color: white;
   border-radius: 50%;
 }

@@ -11,27 +11,24 @@ import { Button } from "react-materialize";
 const { ExportCSVButton } = CSVExport;
 
 export default class ShowAttendance extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sub: "",
-      date: "",
-      enrollemntNo: "",
-      enroll: [
-        {
-          enrollment: "1706105",
-          present: "P",
-        },
-      ],
-      all: [
-        {
-          dataField: "enrollment",
-          text: "Enrollment Number",
-        },
-      ],
-      loadSpinner: false,
-    };
-  }
+  state = {
+    sub: "",
+    date: "",
+    enrollemntNo: "",
+    enroll: [
+      {
+        enrollment: "1706105",
+        present: "P",
+      },
+    ],
+    all: [
+      {
+        dataField: "enrollment",
+        text: "Enrollment Number",
+      },
+    ],
+    loadSpinner: false,
+  };
 
   componentDidMount() {
     this.setState({ loadSpinner: true });
