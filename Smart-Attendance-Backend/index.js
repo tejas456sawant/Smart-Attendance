@@ -1,12 +1,13 @@
 /** @format */
 
 var createError = require("http-errors");
+var functions = require("firebase-functions");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
-const dotenv = require("dotenv");
+var dotenv = require("dotenv");
 dotenv.config();
 
 var indexRouter = require("./routes/index");
@@ -59,4 +60,8 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server Started");
+});
+
+exports.app = functions.https.onRequest(app);
