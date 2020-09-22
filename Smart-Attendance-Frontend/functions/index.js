@@ -1,5 +1,3 @@
-/** @format */
-
 var createError = require("http-errors");
 var functions = require("firebase-functions");
 var express = require("express");

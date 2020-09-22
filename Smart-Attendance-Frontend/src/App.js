@@ -18,23 +18,23 @@ import Queries from "./Components/Queries";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='App'>
+      <div className="App">
         <Navbar />
         <Switch>
-          <Route path='/register' component={RegisterStudent} />
+          <Route path="/register" component={RegisterStudent} />
           <Route
-            path='/AttendanceDetail/:endiv'
+            path="/AttendanceDetail/:endiv"
             component={StudentAttendance}
           />
-          <Route path='/New' component={AddNew} />
-          <Route path='/studentInfo' component={InfoScreen} />
-          <Route path='/timetable' component={AttendanceTable} />
-          <Route path='/generate' component={GenerateReports} />
-          <Route path='/show/:subDate' component={ShowAttendace} />
-          <Route path='/login' component={Login} />
-          <Route path='/complaint' component={Queries} />
-          <Route path='/edit/:enroll' component={EditInfo} />
-          <Route path='/' component={Days} />
+          <Route path="/New" component={AddNew} />
+          <Route path="/studentInfo" component={InfoScreen} />
+          <Route path="/timetable" component={AttendanceTable} />
+          <Route path="/generate" component={GenerateReports} />
+          <Route path="/show/:subDate" component={ShowAttendace} />
+          <Route path="/login" component={Login} />
+          <Route path="/complaint" component={Queries} />
+          <Route path="/edit/:enroll" component={EditInfo} />
+          <Route path="/" component={Days} />
         </Switch>
       </div>
     </BrowserRouter>

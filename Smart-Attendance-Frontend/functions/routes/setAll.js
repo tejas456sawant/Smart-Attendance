@@ -37,11 +37,7 @@ router.post("/classorlab", (req, res) => {
     .doc("ClassAndLab")
     .get()
     .then((rooms) => {
-      if (rooms.get("rooms") !== undefined) {
-        if (rooms.get("rooms").includes(classorlab)) {
-          return res.json("Classroom or Lab already added.");
-        }
-      } else {
+      if (rooms.get("rooms") === undefined) {
         db.collection("OtherInfo")
           .doc("ClassAndLab")
           .set(
@@ -50,11 +46,11 @@ router.post("/classorlab", (req, res) => {
             },
             {
               merge: true,
-            },
+            }
           )
           .then(() => {
             for (var i = 0; i < timeRange.length; i++) {
-              db.collection("TimeTable" + "-" + classorlab)
+              db.collection("TimeTable-" + classorlab)
                 .doc(timeRange[i])
                 .set({
                   Friday: "Break",
@@ -74,6 +70,43 @@ router.post("/classorlab", (req, res) => {
             }
             res.json("Class Or Lab Added.");
           });
+      } else {
+        if (rooms.get("rooms").includes(classorlab)) {
+          return res.json("Classroom or Lab already added.");
+        } else {
+          db.collection("OtherInfo")
+            .doc("ClassAndLab")
+            .set(
+              {
+                rooms: firebase.firestore.FieldValue.arrayUnion(classorlab),
+              },
+              {
+                merge: true,
+              }
+            )
+            .then(() => {
+              for (var i = 0; i < timeRange.length; i++) {
+                db.collection("TimeTable-" + classorlab)
+                  .doc(timeRange[i])
+                  .set({
+                    Friday: "Break",
+                    Thursday: "Break",
+                    Monday: "Break",
+                    Saturday: "Break",
+                    Tuesday: "Break",
+                    Wednesday: "Break",
+                    id: timeRange[i],
+                  })
+                  .then(() => {
+                    console.log("Added");
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }
+              res.json("Class Or Lab Added.");
+            });
+        }
       }
     });
 });
@@ -93,7 +126,7 @@ router.post("/division", (req, res) => {
             },
             {
               merge: true,
-            },
+            }
           )
           .then(() => {
             res.json("Division Added.");
@@ -110,7 +143,7 @@ router.post("/division", (req, res) => {
               },
               {
                 merge: true,
-              },
+              }
             )
             .then(() => {
               res.json("Division Added.");
@@ -127,26 +160,42 @@ router.post("/subject", (req, res) => {
     .doc("Subjects")
     .get()
     .then((divisions) => {
-      if (divisions.get(division) !== undefined) {
-        if (divisions.get(division).includes(`${subject}-${division}`)) {
-          return res.json("Subject already exist.");
-        }
-      } else {
+      if (divisions.get(division) === undefined) {
         db.collection("OtherInfo")
           .doc("Subjects")
           .set(
             {
               [division]: firebase.firestore.FieldValue.arrayUnion(
-                `${subject}-${division}`,
+                `${subject}-${division}`
               ),
             },
             {
               merge: true,
-            },
+            }
           )
           .then(() => {
             res.json("Subject Added.");
           });
+      } else {
+        if (divisions.get(division).includes(`${subject}-${division}`)) {
+          return res.json("Subject already exist.");
+        } else {
+          db.collection("OtherInfo")
+            .doc("Subjects")
+            .set(
+              {
+                [division]: firebase.firestore.FieldValue.arrayUnion(
+                  `${subject}-${division}`
+                ),
+              },
+              {
+                merge: true,
+              }
+            )
+            .then(() => {
+              res.json("Subject Added.");
+            });
+        }
       }
     });
 });

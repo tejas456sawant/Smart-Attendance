@@ -1,20 +1,16 @@
 /** @format */
 
-import React from "react";
-import { Component } from "react";
+import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-
 import SpinnerComp from "./SpinnerComp";
 
-export default class Queries extends Component {
-  state = {
-    complaints: [],
-    loadSpinner: false,
-  };
+const Queries = () => {
+  const [complaints, setComplaints] = useState([]);
+  const [loadSpinner, setLoadSpinner] = useState(false);
 
-  componentDidMount() {
-    this.setState({ loadSpinner: true });
+  useEffect(() => {
+    setLoadSpinner(true);
     firebase
       .firestore()
       .collection("Complaints")
@@ -30,64 +26,68 @@ export default class Queries extends Component {
             });
           }
         });
-        this.setState({ complaints: dummyArray });
+        setComplaints(dummyArray);
         dummyArray = [];
-        this.setState({ loadSpinner: false });
+        setLoadSpinner(false);
       });
-  }
+  }, []);
 
-  spinnerFunction = () => {
-    if (this.state.loadSpinner) {
+  const spinnerFunction = () => {
+    if (loadSpinner) {
       return <SpinnerComp />;
     }
   };
-  render() {
+
+  if (complaints.length > 0) {
     return (
-      <div className='row container' style={{ marginTop: "10px" }}>
-        {this.state.complaints.map((complaint) => (
-          <div className='col l12' key={complaint.cid}>
+      <div className="row container" style={{ marginTop: "10px" }}>
+        {complaints.map((complaint) => (
+          <div className="col l12" key={complaint.cid}>
             <div
-              className='card '
+              className="card "
               style={{
                 height: "125px",
                 borderRadius: "10px",
                 background:
                   "linear-gradient(to left top, #708294, #7d8fa1, #8a9cae, #97a9bb, #a4b6c9)",
-              }}>
-              <div className='card-content row'>
+              }}
+            >
+              <div className="card-content row">
                 <div
-                  className='row col l6'
+                  className="row col l6"
                   style={{
                     fontSize: "15px",
                     color: "rgb(255, 255, 255)",
                     fontFamily: "Varela Round",
-                  }}>
+                  }}
+                >
                   <div
-                    className='col l4'
+                    className="col l4"
                     style={{
                       marginTop: "15px",
                       textAlign: "left",
                       padding: "0px",
-                    }}>
+                    }}
+                  >
                     {complaint.enrollment} <br />
                   </div>
                   <div
-                    className='col l4'
+                    className="col l4"
                     style={{
                       marginTop: "15px",
                       textAlign: "left",
                       paddingTop: "10px",
-                    }}>
+                    }}
+                  >
                     <div
-                      className='btn-small waves-effect waves-light red lighten-2'
+                      className="btn-small waves-effect waves-light red lighten-2"
                       style={{
                         paddingLeft: "10px",
                         paddingRight: "10px",
                         borderRadius: "10px",
                       }}
                       onClick={() => {
-                        this.setState({ loadSpinner: true });
-
+                        setLoadSpinner(false);
                         firebase
                           .firestore()
                           .collection("Complaints")
@@ -98,27 +98,28 @@ export default class Queries extends Component {
                             },
                             {
                               merge: true,
-                            },
+                            }
                           )
                           .then(() => {
                             alert("Solved");
-                            this.setState({ loadSpinner: false });
+                            setLoadSpinner(false);
                           });
-                      }}>
+                      }}
+                    >
                       Remove
                     </div>
                   </div>
                 </div>
-                <span className='card-title activator white-text col l6'>
-                  <i className='material-icons right'>more_vert</i>
+                <span className="card-title activator white-text col l6">
+                  <i className="material-icons right">more_vert</i>
                 </span>
               </div>
-              <div className='card-reveal'>
-                <span className='card-title grey-text text-darken-4'>
+              <div className="card-reveal">
+                <span className="card-title grey-text text-darken-4">
                   {complaint.enrollment}
-                  <i className='material-icons right'>close</i>
+                  <i className="material-icons right">close</i>
                 </span>
-                <blockquote>{complaint.message}</blockquote>) } ) }
+                <blockquote>{complaint.message}</blockquote>
               </div>
             </div>
           </div>
@@ -129,10 +130,21 @@ export default class Queries extends Component {
             top: "50%",
             left: "50%",
             zIndex: 100000,
-          }}>
-          {this.spinnerFunction()}
+          }}
+        >
+          {spinnerFunction()}
         </div>
       </div>
     );
   }
-}
+  console.log(complaints.length);
+  if (complaints.length <= 0) {
+    return (
+      <div className="container" style={{ marginTop: "30vh" }}>
+        <center className="red-text flow-text h1">No Complaints</center>
+      </div>
+    );
+  }
+};
+
+export default Queries;

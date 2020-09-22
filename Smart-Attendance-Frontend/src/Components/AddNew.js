@@ -22,7 +22,7 @@ export default class AddNew extends Component {
     Axios.get(`${process.env.REACT_APP_backUrl}/get/division`).then(
       ({ data }) => {
         this.setState({ divisions: data, loadSpinner: false });
-      },
+      }
     );
   }
 
@@ -39,36 +39,38 @@ export default class AddNew extends Component {
           background:
             "linear-gradient(to bottom,#d5dae5,#d5dae5, #e4e6ed, #f2f2f6",
           height: "100%",
-        }}>
-        <div className='row container' style={{ height: "100%" }}>
-          <div className='col l4 addcard'>
+        }}
+      >
+        <div className="row container" style={{ height: "100%" }}>
+          <div className="col l4 addcard">
             <div
-              className='addcard2'
+              className="addcard2"
               style={{
                 background:
                   "linear-gradient(to top, #119970, rgb(80, 230, 172))",
-              }}>
-              <div className='left left-align'>
+              }}
+            >
+              <div className="left left-align">
                 <span style={{ textAlign: "left", fontSize: "55px" }}>New</span>
                 <br />
                 <span style={{ textAlign: "left", fontSize: "40px" }}>
                   Student
                 </span>
               </div>
-              <a href='#!'>
-                <Link to='/register'>
-                  <i className='large material-icons right icon12'>add</i>
+              <a href="#!">
+                <Link to="/register">
+                  <i className="large material-icons right icon12">add</i>
                 </Link>
               </a>
             </div>
           </div>
-          <div className='col l8 addcard'>
-            <div className='addcard2'>
-              <div className='left-align'>Add Subject</div>
-              <div className='row' style={{ marginTop: "6%" }}>
-                <div className='col l3 news'>
+          <div className="col l8 addcard">
+            <div className="addcard2">
+              <div className="left-align">Add Subject</div>
+              <div className="row" style={{ marginTop: "6%" }}>
+                <div className="col l3 news">
                   <Select
-                    className='newselect'
+                    className="newselect"
                     onChange={(selected) => {
                       this.setState({
                         selectedDivision: selected.target.value,
@@ -76,7 +78,6 @@ export default class AddNew extends Component {
                     }}
                     value={this.state.selectedDivision}
                     options={{
-                      classes: "",
                       dropdownOptions: {
                         alignment: "left",
                         autoTrigger: true,
@@ -87,8 +88,9 @@ export default class AddNew extends Component {
                         inDuration: 150,
                         outDuration: 250,
                       },
-                    }}>
-                    <option value='SelectDivision'>Select Division</option>
+                    }}
+                  >
+                    <option value="SelectDivision">Select Division</option>
                     {this.state.divisions.map((division) => (
                       <option value={division} key={division}>
                         {division}
@@ -96,10 +98,10 @@ export default class AddNew extends Component {
                     ))}
                   </Select>
                 </div>
-                <div className='col l9 container news'>
+                <div className="col l9 container news">
                   <input
-                    type='text'
-                    placeholder='SUB-Lec/Prac'
+                    type="text"
+                    placeholder="SUB-Lec/Prac"
                     style={{
                       marginTop: "5%",
                       background: "#ffffff40",
@@ -114,8 +116,7 @@ export default class AddNew extends Component {
                     }}
                     value={this.state.suborprac}
                   />
-                  <a
-                    href='#!'
+                  <span
                     onClick={() => {
                       this.setState({ loadSpinner: true });
                       Axios.post(
@@ -123,18 +124,20 @@ export default class AddNew extends Component {
                         {
                           division: this.state.selectedDivision,
                           subject: this.state.suborprac,
-                        },
+                        }
                       ).then(({ data }) => {
-                        this.setState({ loadSpinner: true });
+                        this.setState({ loadSpinner: false });
                         return alert(data);
                       });
-                    }}>
+                    }}
+                  >
                     <i
-                      className='medium material-icons icon12'
-                      style={{ verticalAlign: "middle" }}>
+                      className="medium material-icons icon12"
+                      style={{ verticalAlign: "middle", cursor: "pointer" }}
+                    >
                       add
                     </i>
-                  </a>
+                  </span>
                 </div>
                 <br />
                 <span
@@ -142,20 +145,22 @@ export default class AddNew extends Component {
                     color: "white-text",
                     fontSize: "20px",
                   }}
-                  className='container'>{`${this.state.suborprac}-${this.state.selectedDivision}`}</span>
+                  className="container"
+                >{`${this.state.suborprac}-${this.state.selectedDivision}`}</span>
               </div>
             </div>
           </div>
-          <div className='col l6 addcard'>
+          <div className="col l6 addcard">
             <div
-              className='addcard2 news'
+              className="addcard2 news"
               style={{
                 background: " linear-gradient(rgb(114, 136, 255), #673AB7)",
-              }}>
-              <div className='left-align'>Add Division</div>
+              }}
+            >
+              <div className="left-align">Add Division</div>
               <input
-                type='text'
-                placeholder='Division'
+                type="text"
+                placeholder="Division"
                 style={{
                   marginTop: "12%",
                   background: "#ffffff40",
@@ -179,25 +184,28 @@ export default class AddNew extends Component {
                     this.setState({ loadSpinner: false });
                     return alert(data);
                   });
-                }}>
+                }}
+              >
                 <i
-                  className='medium material-icons icon12'
-                  style={{ verticalAlign: "middle", cursor: "pointer" }}>
+                  className="medium material-icons icon12"
+                  style={{ verticalAlign: "middle", cursor: "pointer" }}
+                >
                   add
                 </i>
               </span>
             </div>
           </div>
-          <div className='col l6 addcard'>
+          <div className="col l6 addcard">
             <div
-              className='addcard2 news'
+              className="addcard2 news"
               style={{
                 background: "linear-gradient(to bottom, #00c6ff, #0072ff)",
-              }}>
-              <div className='left-align'>Add Classroom or Lab</div>
+              }}
+            >
+              <div className="left-align">Add Classroom or Lab</div>
               <input
-                type='text'
-                placeholder='Classroom'
+                type="text"
+                placeholder="Classroom"
                 style={{
                   marginTop: "12%",
                   background: "#ffffff40",
@@ -220,15 +228,17 @@ export default class AddNew extends Component {
                     `${process.env.REACT_APP_backUrl}/set/classorlab`,
                     {
                       classorlab: this.state.classorlab,
-                    },
+                    }
                   ).then(({ data }) => {
                     this.setState({ loadSpinner: false });
                     return alert(data);
                   });
-                }}>
+                }}
+              >
                 <i
-                  className='medium material-icons icon12'
-                  style={{ verticalAlign: "middle", cursor: "pointer" }}>
+                  className="medium material-icons icon12"
+                  style={{ verticalAlign: "middle", cursor: "pointer" }}
+                >
                   add
                 </i>
               </span>
@@ -241,7 +251,8 @@ export default class AddNew extends Component {
             top: "45%",
             left: "45%",
             zIndex: 100000,
-          }}>
+          }}
+        >
           {this.spinnerFunction()}
         </div>
       </div>

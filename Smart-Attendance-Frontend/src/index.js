@@ -6,7 +6,7 @@ import "./index.css";
 import App from "./App";
 import "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-//import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import firebase from "firebase/app";
 
 const firebaseConfig = {

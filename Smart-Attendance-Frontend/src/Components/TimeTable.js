@@ -26,17 +26,17 @@ class TimeTable extends Component {
     Axios.get(`${process.env.REACT_APP_backUrl}/get/classorlab`).then(
       ({ data }) => {
         this.setState({ classOrLab: data, loadSpinner: false });
-      },
+      }
     );
     Axios.get(`${process.env.REACT_APP_backUrl}/get/subjects/table`).then(
       ({ data }) => {
         this.setState({ subjects: data, loadSpinner: false });
-      },
+      }
     );
   }
 
   isLoggedIn = () => {
-    if (firebase.auth().currentUser === null) return <Redirect to='/login' />;
+    if (firebase.auth().currentUser === null) return <Redirect to="/login" />;
   };
 
   spinnerFunction = () => {
@@ -48,17 +48,17 @@ class TimeTable extends Component {
   render() {
     return (
       <div style={{ margin: 50, borderColor: "black", borderWidth: 10 }}>
-        <div className='container'>
-          <div className='col3'>
+        <div className="container">
+          <div className="col3">
             <Select
-              label='Select Classroom'
+              label="Select Classroom"
               onChange={(selected) => {
                 this.setState({
                   selectedTable: selected.target.value,
                   loadSpinner: true,
                 });
                 Axios.get(
-                  `${process.env.REACT_APP_backUrl}/table/get/${selected.target.value}`,
+                  `${process.env.REACT_APP_backUrl}/table/get/${selected.target.value}`
                 ).then(({ data }) => {
                   this.setState({ data, loadSpinner: false });
                 });
@@ -76,8 +76,9 @@ class TimeTable extends Component {
                   inDuration: 150,
                   outDuration: 250,
                 },
-              }}>
-              <option value='Select Classroom or Lab'>
+              }}
+            >
+              <option value="Select Classroom or Lab">
                 Select Classroom or Lab
               </option>
               {this.state.classOrLab.map((room) => (
@@ -90,7 +91,7 @@ class TimeTable extends Component {
         </div>
         <hr />
         <BootstrapTable
-          keyField='id'
+          keyField="id"
           data={this.state.data}
           columns={[
             {
@@ -175,7 +176,7 @@ class TimeTable extends Component {
                 axios
                   .put(
                     `${process.env.REACT_APP_backUrl}/table/update/${this.state.selectedTable}`,
-                    sendObj,
+                    sendObj
                   )
                   .then((res) => {
                     if (res.data === "updated..")
@@ -193,13 +194,13 @@ class TimeTable extends Component {
         />
         <hr />
         <blockquote></blockquote>
-        <span className='red-text flow-text h1'>
+        <center className="red-text flow-text h1">
           {this.state.selectedTable === "Select Classroom or Lab"
             ? "Please Select Classroom or Lab."
             : ""}
           <br />
           {this.state.saving}
-        </span>
+        </center>
         <div style={{ position: "absolute", top: "50%", left: "50%" }}>
           {this.spinnerFunction()}
         </div>
