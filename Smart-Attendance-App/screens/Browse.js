@@ -7,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   AsyncStorage,
+  StyleSheet,
 } from "react-native";
 import { Button, Block, Text } from "../components";
 import { BACKENDURL } from "../constants";
@@ -16,6 +17,7 @@ import registerForPushNotificationsAsync from "../constants/registerForPushNotif
 import { BarChart } from "react-native-chart-kit";
 import Axios from "axios";
 import Details from "../components/Details";
+import { theme } from "../constants";
 
 class Browse extends Component {
   state = {
@@ -61,7 +63,6 @@ class Browse extends Component {
   }
 
   _handleNotification = (notification) => {
-    console.log(notification);
     this.setState({
       notification: notification,
     });
@@ -69,13 +70,9 @@ class Browse extends Component {
 
   handleTab = (tab) => {
     const { categories } = this.props;
-    const filtered = categories.filter((category) =>
-      category.tags.includes(tab.toLowerCase()),
-    );
 
     this.setState({
       active: tab,
-      categories: filtered,
     });
   };
 
@@ -89,9 +86,8 @@ class Browse extends Component {
         onPress={() => this.handleTab(tab)}
         style={[styles.tab, isActive ? styles.active : null]}>
         <Text size={16} medium gray={!isActive} secondary={isActive}>
-          {" "}
-          {tab}{" "}
-        </Text>{" "}
+          {tab}
+        </Text>
       </TouchableOpacity>
     );
   }
@@ -104,23 +100,21 @@ class Browse extends Component {
       <Block>
         <Block flex={false} row center space='between' style={styles.header}>
           <Text h1 bold>
-            Browse{" "}
-          </Text>{" "}
+            Browse
+          </Text>
           <Button onPress={() => navigation.navigate("Settings")}>
             <Image
               source={{
                 uri: this.state.img,
               }}
               style={styles.avatar}
-            />{" "}
-          </Button>{" "}
+            />
+          </Button>
         </Block>
         <Block flex={false} row style={styles.tabs}>
-          {" "}
-          {tabs.map((tab) => this.renderTab(tab))}{" "}
+          {tabs.map((tab) => this.renderTab(tab))}
         </Block>
         <ScrollView>
-          {" "}
           {this.state.active === "Attendance" && (
             <BarChart
               data={{

@@ -16,7 +16,6 @@ export default async function registerForPushNotificationsAsync() {
 
   let token = await Notifications.getExpoPushTokenAsync();
   AsyncStorage.getItem("@App:email").then((email) => {
-    console.log(email);
     if (email !== "") {
       Axios.post(`${BACKENDURL}/updateInfo/addToken`, {
         email: email,

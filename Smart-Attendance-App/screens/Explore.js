@@ -64,7 +64,7 @@ class Explore extends Component {
               style={styles.searchIcon}
             />
           }
-        />{" "}
+        />
       </Block>
     );
   }
@@ -89,7 +89,7 @@ class Explore extends Component {
               maxWidth: imgWidth,
             },
           ]}
-        />{" "}
+        />
       </TouchableOpacity>
     );
   }
@@ -106,14 +106,11 @@ class Explore extends Component {
         <TouchableOpacity
           style={[styles.image, styles.mainImage]}
           onPress={() => navigation.navigate("Product")}>
-          <Image source={mainImage} style={[styles.image, styles.mainImage]} />{" "}
-        </TouchableOpacity>{" "}
+          <Image source={mainImage} style={[styles.image, styles.mainImage]} />
+        </TouchableOpacity>
         <Block row space='between' wrap>
-          {" "}
-          {images
-            .slice(1)
-            .map((img, index) => this.renderImage(img, index))}{" "}
-        </Block>{" "}
+          {images.slice(1).map((img, index) => this.renderImage(img, index))}
+        </Block>
       </Block>
     );
   }
@@ -130,9 +127,9 @@ class Explore extends Component {
             width: width / 2.678,
           }}>
           <Text bold white center>
-            Filter{" "}
-          </Text>{" "}
-        </Button>{" "}
+            Filter
+          </Text>
+        </Button>
       </LinearGradient>
     );
   }
@@ -142,9 +139,9 @@ class Explore extends Component {
       <Block>
         <Block flex={false} row center space='between' style={styles.header}>
           <Text h1 bold>
-            Explore{" "}
-          </Text>{" "}
-          {this.renderSearch()}{" "}
+            Explore
+          </Text>
+          {this.renderSearch()}
         </Block>
         <ScrollView showsVerticalScrollIndicator={false} style={styles.explore}>
           {this.renderExplore()}

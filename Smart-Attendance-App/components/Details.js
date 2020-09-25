@@ -69,9 +69,8 @@ const Details = () => {
         style={{
           color: "#b8b8b8",
         }}>
-        {" "}
-        Search for date and lecture{" "}
-      </Text>{" "}
+        Search for date and lecture
+      </Text>
       <View
         style={{
           flexDirection: "row",
@@ -83,10 +82,10 @@ const Details = () => {
           }}>
           <Button gradient onPress={showDatepicker}>
             <Text bold white center>
-              Pick a date{" "}
-            </Text>{" "}
-          </Button>{" "}
-        </View>{" "}
+              Pick a date
+            </Text>
+          </Button>
+        </View>
         <Picker
           selectedValue={selectedSubject}
           style={{
@@ -97,13 +96,13 @@ const Details = () => {
           onValueChange={(itemValue, itemIndex) =>
             setSelectedSubject(itemValue)
           }>
-          <Picker.Item label='Select Subject' value='Select Subject' />{" "}
+          <Picker.Item label='Select Subject' value='Select Subject' />
           {subjects.map((subject) => {
             return (
               <Picker.Item label={subject} value={subject} key={subject} />
             );
-          })}{" "}
-        </Picker>{" "}
+          })}
+        </Picker>
       </View>
       <TouchableOpacity
         style={{
@@ -111,7 +110,6 @@ const Details = () => {
           padding: 10,
         }}
         onPress={() => {
-          console.log(selectedSubject, dateToSend);
           AsyncStorage.getItem("@App:email").then((data) => {
             Axios.get(`${BACKENDURL}/users/getInfo/${data.toString()}`).then(
               (user) => {
@@ -150,10 +148,9 @@ const Details = () => {
               color: "#00DA8E",
               fontSize: 20,
             }}>
-            {" "}
-            Search{" "}
-          </Text>{" "}
-        </View>{" "}
+            Search
+          </Text>
+        </View>
       </TouchableOpacity>
       <View
         style={{
@@ -167,8 +164,7 @@ const Details = () => {
         style={{
           color: "#b8b8b8",
         }}>
-        {" "}
-        Any queries or complaints ?{" "}
+        Any queries or complaints ?
       </Text>
       <TextInput
         multiline
@@ -196,7 +192,6 @@ const Details = () => {
           marginLeft: "15%",
         }}
         onPress={() => {
-          console.log("click");
           if (AsyncStorage.getItem("@App:email")) {
             AsyncStorage.getItem("@App:email").then((data) => {
               Axios.get(`${BACKENDURL}/users/getInfo/${data.toString()}`).then(
@@ -214,8 +209,8 @@ const Details = () => {
           }
         }}>
         <Text bold white center>
-          Submit{" "}
-        </Text>{" "}
+          Submit
+        </Text>
       </Button>
       {show && (
         <DateTimePicker
@@ -274,18 +269,18 @@ const Details = () => {
                     fontSize: 20,
                     marginRight: "5%",
                   }}>
-                  You were present{" "}
-                </Text>{" "}
+                  You were present
+                </Text>
                 <Ionicons
                   name='md-checkmark-circle-outline'
                   size={25}
                   color='rgba(255,255,255,0.8)'
                 />
-              </View>{" "}
-            </TouchableOpacity>{" "}
-          </View>{" "}
-        </View>{" "}
-      </Modal>{" "}
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
       <Modal animationType='slide' transparent={true} visible={absent}>
         <LinearGradient
           colors={[

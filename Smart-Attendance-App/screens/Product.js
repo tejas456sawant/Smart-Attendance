@@ -20,7 +20,7 @@ class Product extends Component {
     return {
       headerRight: (
         <Button onPress={() => {}}>
-          <Icon.Entypo name='dots-three-horizontal' color={theme.colors.gray} />{" "}
+          <Icon.Entypo name='dots-three-horizontal' color={theme.colors.gray} />
         </Button>
       ),
     };
@@ -56,38 +56,32 @@ class Product extends Component {
 
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
-        {" "}
         {this.renderGallery()}
         <Block style={styles.product}>
           <Text h2 bold>
-            {" "}
-            {product.name}{" "}
-          </Text>{" "}
+            {product.name}
+          </Text>
           <Block flex={false} row margin={[theme.sizes.base, 0]}>
-            {" "}
             {product.tags.map((tag) => (
               <Text key={`tag-${tag}`} caption gray style={styles.tag}>
-                {" "}
-                {tag}{" "}
+                {tag}
               </Text>
-            ))}{" "}
-          </Block>{" "}
+            ))}
+          </Block>
           <Text gray light height={22}>
-            {" "}
-            {product.description}{" "}
+            {product.description}
           </Text>
           <Divider margin={[theme.sizes.padding * 0.9, 0]} />
           <Block>
-            <Text semibold> Gallery </Text>{" "}
+            <Text semibold> Gallery </Text>
             <Block row margin={[theme.sizes.padding * 0.9, 0]}>
-              {" "}
               {product.images.slice(1, 3).map((image, index) => (
                 <Image
                   key={`gallery-${index}`}
                   source={image}
                   style={styles.image}
                 />
-              ))}{" "}
+              ))}
               <Block
                 flex={false}
                 card
@@ -95,11 +89,11 @@ class Product extends Component {
                 middle
                 color='rgba(197,204,214,0.20)'
                 style={styles.more}>
-                <Text gray> +{product.images.slice(3).length} </Text>{" "}
-              </Block>{" "}
-            </Block>{" "}
-          </Block>{" "}
-        </Block>{" "}
+                <Text gray> +{product.images.slice(3).length} </Text>
+              </Block>
+            </Block>
+          </Block>
+        </Block>
       </ScrollView>
     );
   }

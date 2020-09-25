@@ -1,12 +1,8 @@
 /** @format */
 
 import React, { Component } from "react";
-import {
-  Alert,
-  Keyboard,
-  KeyboardAvoidingView,
-  StyleSheet,
-} from "react-native";
+import { Alert, Keyboard, KeyboardAvoidingView } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Button, Block, Input, Text } from "../components";
 import { theme, BACKENDURL } from "../constants";
@@ -16,7 +12,6 @@ export default class Forgot extends Component {
   state = {
     email: "abc@gmail.com",
     errors: [],
-    loading: false,
   };
 
   handleForgot() {
@@ -25,9 +20,6 @@ export default class Forgot extends Component {
     const errors = [];
 
     Keyboard.dismiss();
-    this.setState({ loading: true });
-
-    this.setState({ errors, loading: false });
 
     Axios.post(`${BACKENDURL}/updateInfo/forgetPassword/`, {
       emailAddress: email,
@@ -59,7 +51,7 @@ export default class Forgot extends Component {
 
   render() {
     const { navigation } = this.props;
-    const { loading, errors } = this.state;
+    const { errors } = this.state;
     const hasErrors = (key) => (errors.includes(key) ? styles.hasErrors : null);
 
     return (

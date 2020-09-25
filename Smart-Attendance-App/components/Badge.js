@@ -1,10 +1,9 @@
 /** @format */
 
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
-
 import Block from "./Block";
 import { theme } from "../constants";
+import { StyleSheet } from "react-native";
 
 export default class Badge extends Component {
   render() {

@@ -20,7 +20,6 @@ class Settings extends Component {
     StudentEmail: "",
     StudentImage:
       "https://cdn1.iconfinder.com/data/icons/education-1-15/151/26-512.png",
-    loading: false,
   };
 
   componentDidMount() {
@@ -62,22 +61,20 @@ class Settings extends Component {
     this.props.navigation.navigate("Login");
   };
   render() {
-    const { loading } = this.state;
-
     return (
       <Block>
         <Block flex={false} row center space='between' style={styles.header}>
           <Text h1 bold>
-            Settings{" "}
-          </Text>{" "}
+            Settings
+          </Text>
           <Button>
             <Image
               source={{
                 uri: this.state.StudentImage,
               }}
               style={styles.avatar}
-            />{" "}
-          </Button>{" "}
+            />
+          </Button>
         </Block>
         <ScrollView showsVerticalScrollIndicator={true}>
           <Block style={styles.inputs}>
@@ -88,11 +85,11 @@ class Settings extends Component {
                   style={{
                     marginBottom: 10,
                   }}>
-                  Name{" "}
-                </Text>{" "}
-                <Text bold> {this.state.StudentName} </Text>{" "}
-              </Block>{" "}
-            </Block>{" "}
+                  Name
+                </Text>
+                <Text bold>{this.state.StudentName}</Text>
+              </Block>
+            </Block>
             <Block row space='between' margin={[10, 0]} style={styles.inputRow}>
               <Block>
                 <Text
@@ -100,11 +97,11 @@ class Settings extends Component {
                   style={{
                     marginBottom: 10,
                   }}>
-                  Enrollment{" "}
-                </Text>{" "}
-                <Text bold> {this.state.StudentEnrollment} </Text>{" "}
-              </Block>{" "}
-            </Block>{" "}
+                  Enrollment
+                </Text>
+                <Text bold> {this.state.StudentEnrollment}</Text>
+              </Block>
+            </Block>
             <Block row space='between' margin={[10, 0]} style={styles.inputRow}>
               <Block>
                 <Text
@@ -112,11 +109,11 @@ class Settings extends Component {
                   style={{
                     marginBottom: 10,
                   }}>
-                  Phone{" "}
-                </Text>{" "}
-                <Text bold> {this.state.StudentPhone} </Text>{" "}
-              </Block>{" "}
-            </Block>{" "}
+                  Phone
+                </Text>
+                <Text bold>{this.state.StudentPhone}</Text>
+              </Block>
+            </Block>
             <Block row space='between' margin={[10, 0]} style={styles.inputRow}>
               <Block>
                 <Text
@@ -124,16 +121,16 @@ class Settings extends Component {
                   style={{
                     marginBottom: 10,
                   }}>
-                  E - mail{" "}
-                </Text>{" "}
-                <Text bold> {this.state.StudentEmail} </Text>{" "}
-              </Block>{" "}
-            </Block>{" "}
+                  E - mail
+                </Text>
+                <Text bold>{this.state.StudentEmail}</Text>
+              </Block>
+            </Block>
           </Block>
           <Divider margin={[theme.sizes.base, theme.sizes.base * 1]} />
           <Block style={styles.toggles}>
             <Block row center space='between'>
-              <Text gray2> Notifications </Text>{" "}
+              <Text gray2> Notifications </Text>
               <Switch
                 value={this.state.notifications}
                 onValueChange={(value) =>
@@ -141,20 +138,20 @@ class Settings extends Component {
                     notifications: value,
                   })
                 }
-              />{" "}
-            </Block>{" "}
-          </Block>{" "}
-          <Divider margin={[theme.sizes.base, theme.sizes.base * 1]} />{" "}
+              />
+            </Block>
+          </Block>
+          <Divider margin={[theme.sizes.base, theme.sizes.base * 1]} />
           <Block padding={[0, theme.sizes.base * 2]}>
             <Block middle>
               <Button gradient onPress={() => this.handleLogout()}>
                 <Text bold white center>
-                  Logout{" "}
-                </Text>{" "}
-              </Button>{" "}
-            </Block>{" "}
-          </Block>{" "}
-        </ScrollView>{" "}
+                  Logout
+                </Text>
+              </Button>
+            </Block>
+          </Block>
+        </ScrollView>
       </Block>
     );
   }

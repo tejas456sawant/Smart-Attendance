@@ -6,7 +6,6 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 import Login from "../screens/Login";
-
 import Forgot from "../screens/Forgot";
 import Explore from "../screens/Explore";
 import Browse from "../screens/Browse";

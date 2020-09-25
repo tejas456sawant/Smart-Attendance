@@ -2,5 +2,6 @@
 
 import * as theme from "./theme";
 
-const BACKENDURL = "https://api-smartattendance.herokuapp.com";
+const BACKENDURL =
+  "https://us-central1-geeksfortech-286913.cloudfunctions.net/app";
 export { theme, BACKENDURL };

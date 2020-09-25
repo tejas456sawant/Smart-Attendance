@@ -11,19 +11,16 @@ import { Button, Block, Input, Text } from "../components";
 import { theme, BACKENDURL } from "../constants";
 import Axios from "axios";
 import registerForPushNotificationsAsync from "../constants/registerForPushNotificationsAsync";
-import Loading from "../constants/Loading";
 
 export default class Login extends Component {
   state = {
     email: "",
     password: "",
     errors: [],
-    loading: false,
   };
 
   componentDidMount() {
     AsyncStorage.getItem("@App:email").then((data) => {
-      console.log(data);
       if (data !== null) {
         registerForPushNotificationsAsync();
         return this.props.navigation.navigate("Browse");
@@ -37,7 +34,6 @@ export default class Login extends Component {
     const errors = [];
 
     Keyboard.dismiss();
-    this.setState({ loading: true });
 
     if (email === "" || password === "") {
       return alert("Please Check Input Fields :( ");
@@ -55,12 +51,11 @@ export default class Login extends Component {
       .catch((error) => {
         console.log(error);
       });
-    this.setState({ errors, loading: false });
   }
 
   render() {
     const { navigation } = this.props;
-    const { loading, errors } = this.state;
+    const { errors } = this.state;
     const hasErrors = (key) => (errors.includes(key) ? styles.hasErrors : null);
 
     return (
@@ -90,7 +85,6 @@ export default class Login extends Component {
                 Login
               </Text>
             </Button>
-            <Loading loading={this.state.loading} />
             <Button onPress={() => navigation.navigate("Forgot")}>
               <Text
                 gray
