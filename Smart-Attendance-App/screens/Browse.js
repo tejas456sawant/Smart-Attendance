@@ -4,13 +4,12 @@ import React, { Component } from "react";
 import {
   Dimensions,
   Image,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   AsyncStorage,
 } from "react-native";
 import { Button, Block, Text } from "../components";
-import { theme, mocks, BACKENDURL } from "../constants";
+import { BACKENDURL } from "../constants";
 import { Notifications } from "expo";
 const { width } = Dimensions.get("window");
 import registerForPushNotificationsAsync from "../constants/registerForPushNotificationsAsync";
@@ -24,7 +23,10 @@ class Browse extends Component {
     categories: [],
     img: "https://cdn1.iconfinder.com/data/icons/education-1-15/151/26-512.png",
     notification: {},
-    AttendanceData: { lecture: [], percent: [] },
+    AttendanceData: {
+      lecture: [],
+      percent: [],
+    },
   };
 
   componentDidMount() {
@@ -47,7 +49,9 @@ class Browse extends Component {
                 enrollment: student.data.StudentEnrollment,
                 subjects: subjects.data,
               }).then(({ data }) => {
-                this.setState({ AttendanceData: data });
+                this.setState({
+                  AttendanceData: data,
+                });
               });
             });
           },
@@ -58,7 +62,9 @@ class Browse extends Component {
 
   _handleNotification = (notification) => {
     console.log(notification);
-    this.setState({ notification: notification });
+    this.setState({
+      notification: notification,
+    });
   };
 
   handleTab = (tab) => {
@@ -67,7 +73,10 @@ class Browse extends Component {
       category.tags.includes(tab.toLowerCase()),
     );
 
-    this.setState({ active: tab, categories: filtered });
+    this.setState({
+      active: tab,
+      categories: filtered,
+    });
   };
 
   renderTab(tab) {
@@ -80,8 +89,9 @@ class Browse extends Component {
         onPress={() => this.handleTab(tab)}
         style={[styles.tab, isActive ? styles.active : null]}>
         <Text size={16} medium gray={!isActive} secondary={isActive}>
-          {tab}
-        </Text>
+          {" "}
+          {tab}{" "}
+        </Text>{" "}
       </TouchableOpacity>
     );
   }
@@ -94,18 +104,23 @@ class Browse extends Component {
       <Block>
         <Block flex={false} row center space='between' style={styles.header}>
           <Text h1 bold>
-            Browse
-          </Text>
+            Browse{" "}
+          </Text>{" "}
           <Button onPress={() => navigation.navigate("Settings")}>
-            <Image source={{ uri: this.state.img }} style={styles.avatar} />
-          </Button>
+            <Image
+              source={{
+                uri: this.state.img,
+              }}
+              style={styles.avatar}
+            />{" "}
+          </Button>{" "}
         </Block>
-
         <Block flex={false} row style={styles.tabs}>
-          {tabs.map((tab) => this.renderTab(tab))}
+          {" "}
+          {tabs.map((tab) => this.renderTab(tab))}{" "}
         </Block>
-
         <ScrollView>
+          {" "}
           {this.state.active === "Attendance" && (
             <BarChart
               data={{
@@ -145,11 +160,6 @@ class Browse extends Component {
     );
   }
 }
-
-Browse.defaultProps = {
-  profile: mocks.profile,
-  categories: mocks.categories,
-};
 
 export default Browse;
 

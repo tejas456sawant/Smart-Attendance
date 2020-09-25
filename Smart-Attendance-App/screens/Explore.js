@@ -5,15 +5,15 @@ import {
   Animated,
   Dimensions,
   Image,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
 import * as Icon from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Button, Input, Block, Text } from "../components";
-import { theme, mocks } from "../constants";
+import { theme } from "../constants";
 
 const { width, height } = Dimensions.get("window");
 
@@ -42,10 +42,18 @@ class Explore extends Component {
           style={styles.searchInput}
           onFocus={() => this.handleSearchFocus(true)}
           onBlur={() => this.handleSearchFocus(false)}
-          onChangeText={(text) => this.setState({ searchString: text })}
+          onChangeText={(text) =>
+            this.setState({
+              searchString: text,
+            })
+          }
           value={searchString}
           onRightPress={() =>
-            isEditing ? this.setState({ searchString: null }) : null
+            isEditing
+              ? this.setState({
+                  searchString: null,
+                })
+              : null
           }
           rightStyle={styles.searchRight}
           rightLabel={
@@ -56,7 +64,7 @@ class Explore extends Component {
               style={styles.searchIcon}
             />
           }
-        />
+        />{" "}
       </Block>
     );
   }
@@ -74,8 +82,14 @@ class Explore extends Component {
         onPress={() => navigation.navigate("Product")}>
         <Image
           source={img}
-          style={[styles.image, { minWidth: imgWidth, maxWidth: imgWidth }]}
-        />
+          style={[
+            styles.image,
+            {
+              minWidth: imgWidth,
+              maxWidth: imgWidth,
+            },
+          ]}
+        />{" "}
       </TouchableOpacity>
     );
   }
@@ -85,15 +99,21 @@ class Explore extends Component {
     const mainImage = images[0];
 
     return (
-      <Block style={{ marginBottom: height / 3 }}>
+      <Block
+        style={{
+          marginBottom: height / 3,
+        }}>
         <TouchableOpacity
           style={[styles.image, styles.mainImage]}
           onPress={() => navigation.navigate("Product")}>
-          <Image source={mainImage} style={[styles.image, styles.mainImage]} />
-        </TouchableOpacity>
+          <Image source={mainImage} style={[styles.image, styles.mainImage]} />{" "}
+        </TouchableOpacity>{" "}
         <Block row space='between' wrap>
-          {images.slice(1).map((img, index) => this.renderImage(img, index))}
-        </Block>
+          {" "}
+          {images
+            .slice(1)
+            .map((img, index) => this.renderImage(img, index))}{" "}
+        </Block>{" "}
       </Block>
     );
   }
@@ -104,11 +124,15 @@ class Explore extends Component {
         locations={[0.5, 1]}
         style={styles.footer}
         colors={["rgba(255,255,255,0)", "rgba(255,255,255,0.6)"]}>
-        <Button gradient style={{ width: width / 2.678 }}>
+        <Button
+          gradient
+          style={{
+            width: width / 2.678,
+          }}>
           <Text bold white center>
-            Filter
-          </Text>
-        </Button>
+            Filter{" "}
+          </Text>{" "}
+        </Button>{" "}
       </LinearGradient>
     );
   }
@@ -118,24 +142,18 @@ class Explore extends Component {
       <Block>
         <Block flex={false} row center space='between' style={styles.header}>
           <Text h1 bold>
-            Explore
-          </Text>
-          {this.renderSearch()}
+            Explore{" "}
+          </Text>{" "}
+          {this.renderSearch()}{" "}
         </Block>
-
         <ScrollView showsVerticalScrollIndicator={false} style={styles.explore}>
           {this.renderExplore()}
         </ScrollView>
-
         {this.renderFooter()}
       </Block>
     );
   }
 }
-
-Explore.defaultProps = {
-  images: mocks.explore,
-};
 
 export default Explore;
 

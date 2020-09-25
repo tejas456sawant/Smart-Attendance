@@ -2,18 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import {
-  Dimensions,
-  Image,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   AsyncStorage,
   Modal,
 } from "react-native";
-import { View, TextInput, Platform, Picker } from "react-native";
+import { View, TextInput, Platform, Picker, StyleSheet } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Button, Block, Text } from "../components";
-import { theme, mocks, BACKENDURL } from "../constants";
+import { Button, Text } from "../components";
+import { BACKENDURL } from "../constants";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import Axios from "axios";
@@ -64,33 +61,55 @@ const Details = () => {
   };
 
   return (
-    <ScrollView style={{ padding: "5%" }}>
-      <Text style={{ color: "#b8b8b8" }}>Search for date and lecture</Text>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ width: "40%", margin: "3%" }}>
+    <ScrollView
+      style={{
+        padding: "5%",
+      }}>
+      <Text
+        style={{
+          color: "#b8b8b8",
+        }}>
+        {" "}
+        Search for date and lecture{" "}
+      </Text>{" "}
+      <View
+        style={{
+          flexDirection: "row",
+        }}>
+        <View
+          style={{
+            width: "40%",
+            margin: "3%",
+          }}>
           <Button gradient onPress={showDatepicker}>
             <Text bold white center>
-              Pick a date
-            </Text>
-          </Button>
-        </View>
+              Pick a date{" "}
+            </Text>{" "}
+          </Button>{" "}
+        </View>{" "}
         <Picker
           selectedValue={selectedSubject}
-          style={{ width: "50%", marginLeft: "2%", marginTop: "5%" }}
+          style={{
+            width: "50%",
+            marginLeft: "2%",
+            marginTop: "5%",
+          }}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedSubject(itemValue)
           }>
-          <Picker.Item label='Select Subject' value='Select Subject' />
+          <Picker.Item label='Select Subject' value='Select Subject' />{" "}
           {subjects.map((subject) => {
             return (
               <Picker.Item label={subject} value={subject} key={subject} />
             );
-          })}
-        </Picker>
+          })}{" "}
+        </Picker>{" "}
       </View>
-
       <TouchableOpacity
-        style={{ alignItems: "center", padding: 10 }}
+        style={{
+          alignItems: "center",
+          padding: 10,
+        }}
         onPress={() => {
           console.log(selectedSubject, dateToSend);
           AsyncStorage.getItem("@App:email").then((data) => {
@@ -126,10 +145,16 @@ const Details = () => {
             padding: 8,
             borderRadius: 15,
           }}>
-          <Text style={{ color: "#00DA8E", fontSize: 20 }}>Search</Text>
-        </View>
+          <Text
+            style={{
+              color: "#00DA8E",
+              fontSize: 20,
+            }}>
+            {" "}
+            Search{" "}
+          </Text>{" "}
+        </View>{" "}
       </TouchableOpacity>
-
       <View
         style={{
           margin: 20,
@@ -138,9 +163,13 @@ const Details = () => {
           borderBottomWidth: 1,
         }}
       />
-
-      <Text style={{ color: "#b8b8b8" }}>Any queries or complaints ?</Text>
-
+      <Text
+        style={{
+          color: "#b8b8b8",
+        }}>
+        {" "}
+        Any queries or complaints ?{" "}
+      </Text>
       <TextInput
         multiline
         numberOfLines={4}
@@ -159,10 +188,13 @@ const Details = () => {
         onChangeText={(text) => setMessage(text)}
         placeholder='Type here !'
       />
-
       <Button
         gradient
-        style={{ width: "70%", marginTop: 20, marginLeft: "15%" }}
+        style={{
+          width: "70%",
+          marginTop: 20,
+          marginLeft: "15%",
+        }}
         onPress={() => {
           console.log("click");
           if (AsyncStorage.getItem("@App:email")) {
@@ -182,10 +214,9 @@ const Details = () => {
           }
         }}>
         <Text bold white center>
-          Submit
-        </Text>
+          Submit{" "}
+        </Text>{" "}
       </Button>
-
       {show && (
         <DateTimePicker
           testID='dateTimePicker'
@@ -197,7 +228,6 @@ const Details = () => {
           onChange={onChange}
         />
       )}
-
       <Modal animationType='slide' transparent={true} visible={present}>
         <LinearGradient
           colors={[
@@ -214,7 +244,6 @@ const Details = () => {
             height: "100%",
           }}
         />
-
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <LinearGradient
@@ -229,7 +258,6 @@ const Details = () => {
                 height: "300%",
               }}
             />
-
             <TouchableOpacity
               onPress={() => {
                 setPresent(!present);
@@ -246,18 +274,18 @@ const Details = () => {
                     fontSize: 20,
                     marginRight: "5%",
                   }}>
-                  You were present
-                </Text>
+                  You were present{" "}
+                </Text>{" "}
                 <Ionicons
                   name='md-checkmark-circle-outline'
                   size={25}
                   color='rgba(255,255,255,0.8)'
                 />
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+              </View>{" "}
+            </TouchableOpacity>{" "}
+          </View>{" "}
+        </View>{" "}
+      </Modal>{" "}
       <Modal animationType='slide' transparent={true} visible={absent}>
         <LinearGradient
           colors={[
@@ -274,7 +302,6 @@ const Details = () => {
             height: "100%",
           }}
         />
-
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <LinearGradient
@@ -289,7 +316,6 @@ const Details = () => {
                 height: "300%",
               }}
             />
-
             <TouchableOpacity
               onPress={() => {
                 setAbsent(!absent);
@@ -318,7 +344,6 @@ const Details = () => {
           </View>
         </View>
       </Modal>
-
       <Modal animationType='slide' transparent={true} visible={modalVisible}>
         <LinearGradient
           colors={[
@@ -335,7 +360,6 @@ const Details = () => {
             height: "100%",
           }}
         />
-
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <LinearGradient
@@ -350,7 +374,6 @@ const Details = () => {
                 height: "300%",
               }}
             />
-
             <TouchableOpacity
               onPress={() => {
                 setModalVisible(!modalVisible);

@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
@@ -21,6 +23,6 @@ export const styles = StyleSheet.create({
   card: {
     borderRadius: theme.sizes.radius,
     padding: theme.sizes.base + 4,
-    marginBottom: theme.sizes.base
-  }
+    marginBottom: theme.sizes.base,
+  },
 });
