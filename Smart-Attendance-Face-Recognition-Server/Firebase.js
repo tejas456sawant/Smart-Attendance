@@ -1,5 +1,3 @@
-/** @format */
-
 const firebase = require("firebase");
 const dotenv = require("dotenv");
 dotenv.config();
