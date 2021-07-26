@@ -9,7 +9,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "canvas": "^2.6.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "dotenv": "^8.2.0",
     "face-api.js": "^0.22.2",
     "firebase": "^7.14.3",
