@@ -25,7 +25,7 @@
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.7",
     "nodemailer": "^6.4.16",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.20",
     "pug": "^3.0.1",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1"
