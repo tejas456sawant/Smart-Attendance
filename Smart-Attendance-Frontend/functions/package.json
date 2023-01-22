@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "face-api.js": "^0.22.2",
     "firebase": "^7.14.3",
-    "firebase-admin": "^8.10.0",
+    "firebase-admin": "^11.5.0",
     "firebase-functions": "^3.6.1",
     "http-errors": "^1.7.3",
     "morgan": "^1.10.0",
