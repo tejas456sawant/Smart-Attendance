@@ -27,7 +27,7 @@
     "nodemailer": "^6.4.16",
     "nodemon": "^2.0.20",
     "pug": "^3.0.1",
-    "firebase-admin": "^8.10.0",
+    "firebase-admin": "^11.4.1",
     "firebase-functions": "^3.6.1"
   },
   "devDependencies": {
